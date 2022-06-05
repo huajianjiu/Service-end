@@ -1,4 +1,5 @@
 var express = require('express');
+const sequelize = require('sequelize');
 var router = express.Router();
 const user = require('../../db/model/user');
 const reply = require('../../db/model/reply');
@@ -68,6 +69,8 @@ router.get('/imgList',async(req,res)=>{
 	const {tID} = req.query;
 	let result = await imglist.findAll({attributes:['imgURL'],where:{topicTID:tID},raw: true})
 	await topic.increment({tClickCount: 1}, { where: { tID } })
+	const{sectionSID}=await topic.findOne({attributes:['sectionSID'],where:{tID},raw:true});
+	await section.increment({sClickCount: 1}, { where: { sID:sectionSID } })
 	let data={...resSuccess};
 	data.data=result;
 	res.send(data);	
@@ -121,7 +124,8 @@ router.post('/postTopic',async(req,res)=>{
 				await imglist.create({topicTID,imgURL:imgList[j]});
 			}	
 		}
-		res.send(resSuccess)
+		await section.increment({sTopicCount: 1}, { where: { sID: topicForm.sectionSID } })
+		res.send(resSuccess);
 	}catch(e){
 		console.log(e)
 		res.send(resError400);

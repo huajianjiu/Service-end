@@ -6,7 +6,7 @@
 let sqlConfig = {
     host: 'localhost',
     user: 'root',
-    password: 'xxxxxxxx',
+    password: 'xxxxx',
     database: 'bbs',
     port: 3306
 }
@@ -17,7 +17,7 @@ if (process.env.NODE_ENV !== 'production') {
     sqlConfig = {
         host: 'localhost',
         user: 'root',
-        password: 'xxxxxxxxxx',
+        password: 'xxxxx',
         database: 'bbs',
         port: 3306
     };

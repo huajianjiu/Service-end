@@ -8,5 +8,5 @@ module.exports = {
         return jwt.sign(data,secretKey,{expiresIn:time});
     },
     // 解密token
-    decodeToken:()=>expressjwt({secret:secretKey,algorithms: ["HS256"],credentialsRequired: false}).unless({path:['/admin/user/login','/app/user/login','/app/user/validatorUsername']})
+    decodeToken:()=>expressjwt({secret:secretKey,algorithms: ["HS256"],credentialsRequired: false}).unless({path:['/admin/user/login','/app/user/login','/app/user/validatorUsername','/app/user/checkCode','/app/user/getCode']})
 }

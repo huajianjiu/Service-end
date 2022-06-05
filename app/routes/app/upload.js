@@ -7,7 +7,8 @@ const random = require('string-random');
 router.post("/avatar", multer({
     dest: "./public/upload/avatar"
 }).single("avatar"), (req, res) => {
-    var url = "http://localhost:3000/";
+    const url = "http://47.100.242.112/"
+    // var url = "http://localhost:3000/";
     var file = req.file;
     var time = Date.now();
     try {
@@ -29,7 +30,8 @@ router.post('/pictures', multer({dest:'./public/upload/pictures'}).array('pictur
 	try{
     const files=req.files;
 	let imglist=[];
-	const url = "http://localhost:3000/";
+	// const url = "http://localhost:3000/";
+	const url = "http://47.100.242.112/"
 	for(let i in files){
 		let strName = random(16);
 		let file = files[i]
