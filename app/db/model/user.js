@@ -9,7 +9,7 @@ var user = sequelize.define('user',{
         autoIncrement: true
     },
     userName: {
-       type:Sequelize.STRING(20), 
+       type:Sequelize.STRING(320), 
        allowNull: false,
     },
     userPassword: {

@@ -31,7 +31,6 @@ app.use(function(req, res, next) {
 // error handler
 app.use(function(err, req, res, next) {
   // 判断token是否失效
-  console.log(err);
   if (err.name === "UnauthorizedError") {
     res.json({
       code:50014,
